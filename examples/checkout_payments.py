@@ -380,9 +380,7 @@ def main():
     
     try:
         # Initialize client
-        client = get_client(
-            api_key="bagel_test_64C70FE8526A48568D4EEA9D9164F508"
-            )
+        client = get_client()
         
         # Run examples
         create_simple_checkout(client)
