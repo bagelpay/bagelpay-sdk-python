@@ -574,9 +574,7 @@ def main():
     
     try:
         # Initialize the client
-        client = get_client(
-            api_key="bagel_test_64C70FE8526A48568D4EEA9D9164F508"
-            )
+        client = get_client()
         
         # Use the client as a context manager for automatic cleanup
         with client:
