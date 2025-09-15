@@ -43,20 +43,20 @@ from bagelpay import BagelPayClient, CheckoutRequest, CreateProductRequest
 
 # 1. Initialize the client
 client = BagelPayClient(
-    api_key="bagel_test_64C70FE8526A48568D4EEA9D9164F508"
+    api_key="your-api-key-here"
 )
 
 # 2. Create a sample product
 product = client.create_product(CreateProductRequest(
-    name="Product_" + str(random.randint(1000, 9999)),
-    description="Description_of_product_" + str(random.randint(1000, 9999)),
-    price=random.uniform(50.5, 1024.5),
+    name="Product_name",
+    description="Description_of_product",
+    price=29.99
     currency="USD",
-    billing_type=random.choice(["subscription", "subscription", "subscription", "single_payment"]),
+    billing_type="subscription",
     tax_inclusive=False,
-    tax_category=random.choice(["digital_products", "saas_services", "ebooks"]),
-    recurring_interval=random.choice(["daily", "weekly", "monthly", "3months", "6months"]),
-    trial_days=random.choice([0, 1, 7])
+    tax_category="digital_products",
+    recurring_interval="daily",
+    trial_days=1
     ))
 
 # 3. Get payment URL
