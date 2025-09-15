@@ -72,9 +72,6 @@ print(f"Product URL: {product.product_url}")
 
 - **Python**: 3.11 or higher (recommended), minimum 3.8
 - **Package Manager**: pip or poetry
-- **Operating System**: Windows, macOS, Linux
-- **Memory**: Minimum 512MB RAM
-- **Network**: Internet connection for API calls
 
 ### Method 1: Install from PyPI (Recommended)
 
