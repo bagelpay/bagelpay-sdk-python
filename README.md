@@ -2,6 +2,16 @@
 
 A comprehensive Python client library for the BagelPay API, providing developers with an easy-to-use payment integration solution.
 
+## 🔗 Related Links
+
+- 🌏 **BagelPay Website**: [https://bagelpay.io](https://bagelpay.io)
+- 🌏 **Developer Dashboard**: [https://bagelpay.io/dashboard](https://bagelpay.io/dashboard)
+- 📖 **Official Documentation**: [https://bagelpay.gitbook.io/docs](https://bagelpay.gitbook.io/docs)
+- 📖 **API Documentation**: [https://bagelpay.gitbook.io/docs/apireference](https://bagelpay.gitbook.io/docs/apireference)
+- 📧 **Technical Support**: support@bagelpayment.com
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/bagelpay/bagelpay-sdk-python/issues)
+
+  
 ## 📋 Table of Contents
 
 - [Quick Start](#quick-start)
@@ -23,33 +33,37 @@ A comprehensive Python client library for the BagelPay API, providing developers
 ### 30-Second Quick Demo
 
 ```python
-from bagelpay import BagelPayClient, CheckoutRequest, Customer
+import random
+from bagelpay import BagelPayClient, CheckoutRequest, CreateProductRequest
+
+# 1. Create account at [BagelPay Dashboard](https://dashboard.bagelpay.io)
+# 2. Go to "Developer Settings" → "API Keys"
+# 3. Generate new API key for your environment
+# 3. Save your test and live keys securely
 
 # 1. Initialize the client
 client = BagelPayClient(
-    base_url="https://test.bagelpay.io",
-    api_key="your-test-api-key-here"
+    api_key="bagel_test_64C70FE8526A48568D4EEA9D9164F508"
 )
 
-# 2. Create a payment session
-from datetime import datetime
-
-checkout_request = CheckoutRequest(
-    product_id="prod_123456789",
-    request_id=f"req_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
-    units="1",
-    customer=Customer(
-        email="customer@example.com"
-    ),
-    success_url="https://yoursite.com/success",
-    metadata={
-        "order_id": f"req_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-    }
-)
+# 2. Create a sample product
+product = client.create_product(CreateProductRequest(
+    name="Product_" + str(random.randint(1000, 9999)),
+    description="Description_of_product_" + str(random.randint(1000, 9999)),
+    price=random.uniform(50.5, 1024.5),
+    currency="USD",
+    billing_type=random.choice(["subscription", "subscription", "subscription", "single_payment"]),
+    tax_inclusive=False,
+    tax_category=random.choice(["digital_products", "saas_services", "ebooks"]),
+    recurring_interval=random.choice(["daily", "weekly", "monthly", "3months", "6months"]),
+    trial_days=random.choice([0, 1, 7])
+    ))
 
 # 3. Get payment URL
-response = client.create_checkout(checkout_request)
-print(f"Payment URL: {response.checkout_url}")
+print(f"Product URL: {product.product_url}")
+
+# 4. Complete the checkout session
+# For testing payments, you could use the test card '4242 4242 4242 4242' with any expiration and CVV.
 ```
 
 ## 📦 Installation Guide
