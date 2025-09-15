@@ -353,9 +353,7 @@ def main():
     
     try:
         # Initialize client
-        client = get_client(
-            api_key="bagel_test_64C70FE8526A48568D4EEA9D9164F508"
-        )
+        client = get_client()
         
         # Create products
         digital_product_id = create_digital_product(client)
