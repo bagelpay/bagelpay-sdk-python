@@ -757,7 +757,7 @@ async def handle_post(request: Request):
     """Handle BagelPay webhook notifications"""
     payload = await request.body()
     timestamp = request.headers.get('timestamp').encode()
-    signature = request.headers.get('bagelpay_signature')
+    signature = request.headers.get('Bagelpay-Signature')
     # Combine payload and timestamp
     signature_data = timestamp + ".".encode() + payload
 
